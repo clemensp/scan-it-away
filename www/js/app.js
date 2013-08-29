@@ -18,24 +18,14 @@ require.config({
     'underscore': {
       exports: '_'
     },
-    marionette : {
+    'marionette': {
       deps : ['jquery', 'underscore', 'backbone'],
       exports : 'Marionette'
     }
   }
 });
 
-require(['jquery', 'marionette'], function ($, Marionette) {
-  var App = new Marionette.Application();
-
-  App.addInitializer(function(opts) {
-    var HomeView = Marionette.Layout.extend({
-      template: "#home-template",
-    })
-
-    var homeView = new HomeView({el: opts.contentEl})
-    homeView.render()
-  })
+require(['jquery', 'marionette', "app/main"], function ($, Marionette, App) {
 
   App.start({contentEl: $("#content")})
 });
